@@ -11,4 +11,4 @@ admin.site.register(MissingMark)
 admin.site.register(Student)
 
 admin.site.site_header = "MISSING MARKS APP"
-admin.site.site_title = "MISSING MARKS APP"
+admin.site.site_header = "MISSING MARKS APP"
