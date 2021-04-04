@@ -20,7 +20,7 @@ urlpatterns = [
     path("add_department/", DepartmentCreateView.as_view(), name="add_department"),
 
     path("units/", UnitsListView.as_view(), name="units"),
-    path("add_unit/", UnitsListView.as_view(), name="add_unit"),
+    path("add_unit/", UnitCreateView.as_view(), name="add_unit"),
 
     path("academic_years/", AcademicYearListView.as_view(), name="academic_year"),
     path("add_academic_year/", AcademicYearCreateView.as_view(), name="add_academic_year"),
