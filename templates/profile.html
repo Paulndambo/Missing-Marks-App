@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col mx-auto">
+        {% if user.is_authenticated %}
+        <h5 class="text-center">Name: {{ user.student.full_name}}</h5>
+        <h6 class="text-center">Reg. Number: {{ user.student.registration_number}}</h6>
+        <h6 class="text-center">Programme: {{ user.student.programme}}</h6>
+        <h6 class="text-center">Department {{ user.student.department}}</h6>
+    </div>
+
+</div>
+<br>
+<br>
+   <h6 class="text-center">My Missing Marks List</h6>
+  <div class="row">
+<hr>
+        <br>
+
+    <div class="col text-center">
+           <a href="{% url 'create_missing_mark' %}" class="btn btn-primary">Add New Missing Mark
+               <li class="fas fa-plus"></li>
+           </a>
+            <a href="{% url 'home' %}" class="btn btn-warning">Go 
+                <li class="fas fa-home"></li>
+            </a>
+    </div>
+</div>
+<hr class="height-3">
+<div class="container">
+ <table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+               <tr>
+            <td>Unit Title </td>
+            <td>Semester</td>
+            <td>Lecturer</td>
+            <td>Study Year</td>
+        </tr>
+    </thead>
+    <tbody>
+         {% for missing_mark in student_missing_marks %}
+           <tr>
+               <td>{{ missing_mark.unit }}</td>
+                <td>{{ missing_mark.semester}}</td>
+                <td>{{ missing_mark.lecturer}}</td>
+                <td>{{ missing_mark.year_of_study }}</td>
+           </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endif %}
+  
+{% endblock content %}

@@ -5,33 +5,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MISSING MARKS SYSTEM</title>
+    <title>
+        {% block title %}
+          MISSING MARKS APP
+        {% endblock title %}
+    </title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap-icons.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!--
-       <style>
-        body {
-            background-color: rgb(157, 207, 205);
-        }
-    </style>
--->
- 
-
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/regular.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/brand.css' %}">
 </head>
-<body class="bg-info">
-<div class="container-fluid mt-5 mx-auto bg-info">
-    {% include "navbar.html" %}
-    {% block heading %}
-    {% endblock heading %}
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="/">MISSING MARKS APP</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+
+    <ul class="navbar-nav mr-auto">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
+        </li> 
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>  
+    {% endif %}  
+    </ul>
+    {% if user.is_authenticated %}
+      <a href="{% url 'profile' %}" class="btn btn-info mr-2">My Profile
+               <li class="fas fa-user"></li>
+            </a>
+        <a href="{% url 'create_student' %}" class="btn btn-primary mr-2">Create Profile
+               <li class="fas fa-file"></li>
+            </a>
+    {% endif %}
+    
+    <a href="https://www.github.com/Paulndambo" class="btn btn-warning">Developer On 
+               <li class="fab fa-github"></li>
+            </a>
+  </div>
+</nav>
+<br>
+<br>
+<br>
+
+<div class="container-fluid">
     {% block content %}
     {% endblock content %}
 
 </div>
-    
 
     <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
     <script src="{% static 'js/jquery-1.10.2.js' %}"></script>
@@ -41,5 +78,8 @@
     <script src="{% static 'js/bootstrap-icons.json' %}"></script>
     <script src="{% static 'js/boostrap.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'fontawesome/js/all.js' %}"></script>
+    <script src="{% static 'fontawesome/js/regular.js' %}"></script>
+    <script src="{% static 'fontawesome/js/brand.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <h4 class="display-4 text-center">Units</h4>
+  <div class="row">
+    <div class="col text-center">
+           <a href="{% url 'add_unit' %}" class="btn btn-primary">Add New Unit
+               <li class="fas fa-plus"></li>
+           </a>
+            <a href="{% url 'home' %}" class="btn btn-warning">Go 
+                <li class="fas fa-home"></li>
+            </a>
+    </div>
+</div>
+<hr class="height-3">
+<div class="container">
+
+
+ <table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Unit Code</td>
+            <td>Unit Title</td>
+            <td>Department</td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for unit in object_list %}
+           <tr>
+               <td>{{unit.unit_code }}</td>
+               <td>{{ unit.unit_title }}</td>
+               <td>{{ unit.department }}</td>
+           </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock content %}

@@ -1,66 +1,124 @@
-{% load static %}
+   {% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MISSING MARKS</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-icons.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!--
-       <style>
-        body {
-            background-color: rgb(157, 207, 205);
-        }
-    </style>
--->
- 
+   {% block content %}
 
-</head>
-<body class="bg-dark">
-<div class="container-fluid mt-5 mx-auto bg-dark">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="/">MISSING MARKS SYSTEM</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-</nav>
+{% if user.is_authenticated %}
+  {% if user.is_superuser %}
+     <div class="row">
+       <div class="col-xl-3 col-md-6 mt-5">
+                <div class="card text-white mb-4" style="background-color: maroon;">
+                    <div class="card-body">
+                        <h4>Lecturers</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'lecturers' %}">See More!</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+         <div class="col-xl-3 col-md-6 mt-5">
+                <div class="card text-white mb-4" style="background-color: maroon;">
+                    <div class="card-body">
+                        <h4>Departments</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'departments' %}">See More!</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mt-5">
+                <div class="card text-white mb-4" style="background-color: maroon;">
+                    <div class="card-body">
+                        <h4>Semesters</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'semesters' %}">See More!</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mt-5">
+                <div class="card text-white mb-4" style="background-color: maroon;">
+                    <div class="card-body">
+                        <h4>Programmes</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'programmes' %}">See More!</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+   </div>
+  <div class="row">
+       <div class="col-xl-3 col-md-6 mt-5">
+                <div class="card text-white mb-4" style="background-color: maroon;">
+                    <div class="card-body">
+                        <h4>Units</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'units' %}">Explore!</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+         <div class="col-xl-3 col-md-6 mt-5">
+                <div class="card text-white mb-4" style="background-color: maroon;">
+                    <div class="card-body">
+                        <h4>Academic Years</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'academic_year' %}">Explore!</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mt-5">
+                <div class="card text-white mb-4" style="background-color: maroon;">
+                    <div class="card-body">
+                        <h4>Missing Marks Claims</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'missing_marks' %}">Explore More!</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mt-5">
+                <div class="card text-white mb-4" style="background-color: maroon;">
+                    <div class="card-body">
+                        <h4>Add Missing Marks</h4>
+                        </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white btn btn-success stretched-link" href="{% url 'create_missing_mark' %}">Add Missing Marks</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+   </div>
+  
+  {% endif %}
 <div class="row">
-    <div class="col-md-12 col-md-10 col-lg-8 mx-auto mt-5">
-        <code>
-            <h3>Developed By: Ndambo Paul Ngila</h3>
-            <br>
-             <h4>School: Masinde Muliro University of Science and Technology</h4>
-             <br>
-            <h4>Course: Bsc. Information Technology</h4>
-            <h4>Major: Web and Database Systems Design and Development</h4>
-            <h4>Key Skills: JavaScript, Python, Django, SQL, Flask</h4>
-            <br>
-        
-           <a href="{% url 'create_missing_mark' %}" class="btn btn-primary">Add Missing Mark</a>
-           <a href="https://www.github.com/Paulndambo" class="btn btn-success">Me On Github</a>
-           <a href="#" class="btn btn-warning">Hire Me!</a>
-        </code>
-    
+    <div class="col text-center mt-5">
+         <a href="{% url 'profile' %}" class="btn btn-info">View Profile
+        <li class="fas fa-user"></li>
+    </a>
+     <a href="{% url 'create_missing_mark' %}" class="btn btn-primary">Add Missing Mark
+        <li class="fas fa-plus"></li>
+    </a>
+    </div>
 </div>
 
+{% else %}
+    <div class="row">
+    <div class="col text-center mt-5">
+         <a href="{% url 'register' %}" class="btn btn-info">Create Account
+        <li class="fas fa-user"></li>
+    </a>
+     <a href="{% url 'login' %}" class="btn btn-primary">Login
+        <li class="fas fa-angle-right"></li>
+    </a>
+    </div>
 </div>
-
-</div>
-    
-
-    <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
-    <script src="{% static 'js/jquery-1.10.2.js' %}"></script>
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/popper.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-    <script src="{% static 'js/bootstrap-icons.json' %}"></script>
-    <script src="{% static 'js/boostrap.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-</body>
-</html>
+{% endif %}
+{% endblock content %}

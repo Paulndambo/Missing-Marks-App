@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <code>
+                    <h3 class="text-center"><b>Add Semester</b> </h3>
+                    <hr>
+                </code>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <br>
+                    <button type="submit" class="btn btn-success btn-block btn-lg">Submit</button>
+                </form>
+                <br>
+                <br>
+</div>       
+                
+  <code>
+      <div class="row">
+          <div class="col-4 text-center mt-4">
+          
+         <a href="https://www.github.com/Paulndambo" class="btn btn-warning">Developer On 
+             <li class="fab fa-github"></li>
+         </a>
+      </div>
+      <div class="col-4 text-center mt-4">
+         <a href="#" class="btn btn-info">My Profile</a>
+      </div>
+       <div class="col-4 text-center mt-4">
+         <a href="{% url 'home' %}" class="btn btn-primary">Go Home
+             <li class="fas fa-home"></li>
+         </a>
+      </div>
+      </div>
+    <br>
+    <br>
+ </code>              
+                
+    
+{% endblock content %}

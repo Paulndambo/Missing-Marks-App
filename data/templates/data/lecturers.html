@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <h4 class="display-4 text-center">Lecturers</h4>
+<div class="row">
+    <div class="col text-center">
+           <a href="{% url 'add_lecturer' %}" class="btn btn-primary">Add New Lecturer
+               <li class="fas fa-plus"></li>
+           </a>
+            <a href="{% url 'home' %}" class="btn btn-warning">Go 
+                <li class="fas fa-home"></li>
+            </a>
+    </div>
+</div>
+
+<hr class="height-3">
+<div class="container">
+
+
+ <table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Name</td>
+            <td>Gender</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Address</td>
+            <td>Details</td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for lecturer in object_list %}
+           <tr>
+               <td>{{ lecturer.fullname }}</td>
+               <td>{{ lecturer.gender }}</td>
+               <td>{{ lecturer.phone }}</td>
+               <td>{{ lecturer.email }}</td>
+               <td>{{ lecturer.get_address }}</td>
+               <td>
+                   <a href="#" class="btn btn-success">Details</a>
+               </td>
+           </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock content %}

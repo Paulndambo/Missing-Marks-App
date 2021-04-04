@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h3 class="text-center mt-5">Your missing mark claim has been submitted successfully</h3><br>
+    <div class="row">
+      <div class="col-4">
+        <a href="#" class="btn btn-primary">Go Back Home</a>
+      </div>
+      <div class="col-4">
+        <a href="#" class="btn btn-secondary">Add Missing Mark</a>
+      </div>
+         <div class="col-4">
+            <a href="{% url 'profile' %}" class="btn btn-info">Your Profile
+              <li class="fas fa-user"></li>
+            </a>
+      </div>
+    </div>
+   
+  
+{% endblock content %}
