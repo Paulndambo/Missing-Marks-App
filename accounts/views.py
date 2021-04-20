@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.views import generic
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, UserChangeForm, UserLoginForm
 from django.urls import reverse_lazy
-from django.contrib.auth.views import PasswordChangeView
-from . forms import SignupForm, EditProfileForm, PasswordChangingForm
+from django.contrib.auth.views import PasswordChangeView, UserLoginView
+from . forms import SignupForm, EditProfileForm, PasswordChangingForm, LoginForm
 # Create your views here.
+class UserLoginView():
+
 class UserRegisterView(generic.CreateView):
     form_class = SignupForm
     template_name = 'registration/register.html'

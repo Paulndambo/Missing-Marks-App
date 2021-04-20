@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, UserChangeForm,UserLoginForm
 from django.contrib.auth.models import User
 from django import forms
 
@@ -18,6 +18,16 @@ class SignupForm(UserCreationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+
+
+class LoginForm(UserLoginForm):
+    username = forms.CharField(widget = forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(
+        max_length=255, widget=forms.PasswordInput(attrs={'class': 'form-control', 'type': 'password'}))
+
+    class Meta:
+        model =User
+        fields = ('username', 'password')
 
 
 class EditProfileForm(UserChangeForm):
