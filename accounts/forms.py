@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, UserChangeForm,UserLoginForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, UserChangeForm
 from django.contrib.auth.models import User
 from django import forms
 
@@ -20,16 +20,6 @@ class SignupForm(UserCreationForm):
         self.fields['password2'].widget.attrs['class'] = 'form-control'
 
 
-class LoginForm(UserLoginForm):
-    username = forms.CharField(widget = forms.TextInput(attrs={'class': 'form-control'}))
-    password = forms.CharField(
-        max_length=255, widget=forms.PasswordInput(attrs={'class': 'form-control', 'type': 'password'}))
-
-    class Meta:
-        model =User
-        fields = ('username', 'password')
-
-
 class EditProfileForm(UserChangeForm):
     username = forms.CharField(
         max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -39,16 +29,12 @@ class EditProfileForm(UserChangeForm):
         max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(
         max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    last_login = forms.CharField(
-        max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    date_joined = forms.CharField(
-        max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
 
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name',
-                  'email', 'last_login', 'date_joined')
+                  'email')
 
 
 class PasswordChangingForm(PasswordChangeForm):

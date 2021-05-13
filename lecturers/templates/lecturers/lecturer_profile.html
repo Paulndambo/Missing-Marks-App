@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <h4>My Profile</h4>
+{% if user.is_authenticated %}
+     
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <h5 class="card-title ml-2">{{ user.lecturer.title}} {{ user.lecturer.name }}</h5>
+      <p class="card-title ml-2">ID. Number:<b> {{ user.lecturer.id_number}}</b></p>
+      <p class="card-title ml-2">Gender:<b> {{ user.lecturer.gender}}</b></p>
+      <p class="card-title ml-2">Phone Number:<b> {{ user.lecturer.phone}}</b></p>
+      <p class="card-title ml-2">Email Address:<b> {{ user.lecturer.email}}</b></p>
+      <p class="card-title ml-2">Physical Address:<b> {{ user.lecturer.get_address}}</b></p>
+    </div>
+    <div class="col-md-8 border-left">
+      <div class="card-body">
+        <h5 class="card-title">My Missing Marks</h5>
+        <hr>
+ <table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Student</td>
+            <td>Unit Title </td>
+            <td>Semester</td>
+            <td>Study Year</td>
+        </tr>
+    </thead>
+    <tbody>
+         {% for missing_mark in lec_missing_marks %}
+           <tr>
+                <td>{{ missing_mark.student.registration_number }}</td>
+               <td>{{ missing_mark.unit }}</td>
+                <td>{{ missing_mark.semester}}</td>
+                <td>{{ missing_mark.year_of_study }}</td>
+           </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+{% endblock content %}

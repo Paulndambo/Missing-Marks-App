@@ -33,6 +33,7 @@ YEAR_CHOICES = (
 )
 
 class Lecturer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     id_number = models.CharField(max_length=200, unique=True)
     title = models.CharField(max_length=30, choices=TITLE_CHOICES)
     name = models.CharField(max_length=200)
@@ -59,7 +60,7 @@ class Lecturer(models.Model):
         return self.postal_code +" - "+ self.zip_code+" - "+self.city + ", "+self.country
 
     def get_absolute_url(self):
-        return reverse_lazy("lecturers")
+        return reverse_lazy("profile")
 
 class Department(models.Model):
     department_name = models.CharField(max_length=500)
@@ -123,7 +124,7 @@ class Student(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
-        return reverse_lazy("home")
+        return reverse_lazy("profile")
 
     def __str__(self):
         return self.full_name

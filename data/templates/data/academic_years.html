@@ -3,34 +3,49 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <h4 class="display-4 text-center">Academic Years</h4>
+<br>
+  <h4 class="text-center">Academic Years</h4>
+  <br>
+  <hr>
 <div class="row">
-    <div class="col text-center">
+    <div class="col-sm-12 col-md-6 col-xl-3">
+           
+    </div>
+      <div class="col-sm-12 col-md-6 col-xl-3 mx-auto">
            <a href="{% url 'add_academic_year' %}" class="btn btn-primary">Add Academic Year
                <li class="fas fa-plus"></li>
            </a>
-            <a href="{% url 'home' %}" class="btn btn-warning">Go 
+           <span>
+               <a href="{% url 'home' %}" class="btn btn-success">Go 
                 <li class="fas fa-home"></li>
             </a>
+           </span>
     </div>
+      <div class="col-sm-12 col-md-6 col-xl-3">
+         
+    </div>
+  
 </div>
  
 <hr class="height-3">
 <div class="container">
+<div class="row">
+    <div class="col-md-3">
 
- <table class="table table-borderless">
-    <thead class="border-bottom font-weight-bold">
-        <tr>
-            <td>Academic Year</td>
-        </tr>
-    </thead>
-    <tbody>
-    {% for year in object_list %}
-           <tr>
-               <td>{{year.academic_year }}</td>
-           </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    </div>
+    <div class="col-md-3 mx-auto">
+        
+            <ol>
+                {% for year in object_list %}
+                <li>{{ year.academic_year }}</li>
+                {% endfor %}
+            </ol>
+        
+    </div>
+    <div class="col-md-3">
+        
+    </div>
+</div>
+<hr>
 </div>
 {% endblock content %}

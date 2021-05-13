@@ -97,17 +97,42 @@
             </div>
    </div>
   
+
   {% endif %}
-<div class="row">
-    <div class="col text-center mt-5">
-         <a href="{% url 'profile' %}" class="btn btn-info">View Profile
-        <li class="fas fa-user"></li>
-    </a>
-     <a href="{% url 'create_missing_mark' %}" class="btn btn-primary">Add Missing Mark
-        <li class="fas fa-plus"></li>
-    </a>
-    </div>
-</div>
+   {% if user.student.id %}
+        <div class="row">
+            <div class="col text-center mt-5">
+                 <a href="{% url 'profile' %}" class="btn btn-info">View Profile
+                <li class="fas fa-user"></li>
+            </a>
+            </div>
+        </div>
+        {% elif user.lecturer.id %}
+        <div class="row">
+            <div class="col text-center mt-5">
+                <a href="{% url 'lecturer_profile' %}" class="btn btn-info">View Lecturer Profile
+                <li class="fas fa-user"></li>
+            </a>
+            </div>
+        </div>
+        {% else %}
+           <div class="row">
+            <div class="col text-center mt-5">
+                <a href="{% url 'create_student' %}" class="btn btn-info">Create Student Profile
+                <li class="fas fa-user"></li>
+            </a>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col text-center mt-5">
+                <a href="{% url 'add_lecturer' %}" class="btn btn-info">Create Lecturer Profile
+                <li class="fas fa-user"></li>
+            </a>
+            </div>
+        </div>
+   {% endif %}
+
+
 
 {% else %}
     <div class="row">
@@ -121,4 +146,6 @@
     </div>
 </div>
 {% endif %}
+<br>
+<br>
 {% endblock content %}

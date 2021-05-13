@@ -4,7 +4,7 @@ from django.views.generic import CreateView, ListView, DetailView
 from . models import MissingMark, Lecturer, Unit, Programme, Semester, AcademicYear, Department, Student
 from . forms import MissingMarkForm, CreateStudentForm
 # Create your views here.
-def user_profile(request):
+def student_profile(request):
     student = Student.objects.get(user = request.user.id)
     student_missing_marks = MissingMark.objects.filter(student_id = student)
     context = {
@@ -65,19 +65,6 @@ class UnitCreateView(CreateView):
     model = Unit
     fields = ('__all__')
     template_name = "data/add_unit.html"
-
-class LecturersListView(ListView):
-    model =Lecturer
-    template_name = "data/lecturers.html"
-
-class LecturerCreateView(CreateView):
-    model = Lecturer
-    fields = ('__all__')
-    template_name = "data/add_lecturer.html"
-
-class LecturerDetailView(DetailView):
-    model = Lecturer
-    template_name = "data/lecturer_details.html"
 
 def home(request):
     return render(request, "index.html")

@@ -29,33 +29,33 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 
-    <ul class="navbar-nav mr-auto">
-        {% if user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
-        </li> 
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'register' %}">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">Login</a>
-        </li>  
-    {% endif %}  
+    <ul class="navbar-nav ml-auto">
     </ul>
     {% if user.is_authenticated %}
-      <a href="{% url 'profile' %}" class="btn btn-info mr-2">My Profile
+
+
+    {% if user.student.id %}
+        <a href="{% url 'profile' %}" class="btn btn-info mr-2">My Profile
                <li class="fas fa-user"></li>
             </a>
-        <a href="{% url 'create_student' %}" class="btn btn-primary mr-2">Create Profile
-               <li class="fas fa-file"></li>
+          <a class="btn btn-success mr-2" href="{% url 'edit_profile' %}">Edit Profile</a>    
+      {% else %}
+            <a href="{% url 'create_student' %}" class="btn btn-primary mr-2">Create Profile
+               <li class="fas fa-user"></li>
             </a>
     {% endif %}
     
-    <a href="https://www.github.com/Paulndambo" class="btn btn-warning">Developer On 
+      <a class="btn btn-danger mr-2" href="{% url 'logout' %}">Logout</a>
+
+      {% else %}
+       <a class="btn btn-info mr-2" href="{% url 'register' %}">Register
+            <li class="fas fa-user"></li>
+          </a>
+          <a class="btn btn-primary mr-2" href="{% url 'login' %}">Login
+            <li class="fas fa-angle-right"></li>
+          </a>
+    {% endif %}
+    <a href="https://www.github.com/Paulndambo" class="btn btn-warning mt-1">Developer On 
                <li class="fab fa-github"></li>
             </a>
   </div>
