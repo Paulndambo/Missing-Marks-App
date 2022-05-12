@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_authtoken',
 
     'data',
     'crispy_forms',
@@ -76,19 +78,20 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'MissingMarksApp.wsgi.application'
+#WSGI_APPLICATION = 'MissingMarksApp.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -100,6 +103,8 @@ DATABASES = {
         'URI': 'postgres://chjtwfzpqnecxi:c1d2b45d6c3b949553e9b8bd8918010051bdebbcd3293f8d866b4528d9b166d6@ec2-52-71-161-140.compute-1.amazonaws.com:5432/d3habhi6ih8an0'
     }
 }
+"""
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -119,6 +124,26 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+from datetime import timedelta
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_authtoken.auth.AuthTokenAuthentication',
+    ),
+}
+
+REGISTRATION_ENABLED = True
+REGISTRATION_EMAIL_CONFIRM = True
+REGISTRATION_EMAIL_CONFIRM_MODEL_FIELD = 'email_confirmed'
+REGISTRATION_EMAIL_CONFIRM_TOKEN_VALIDITY = timedelta(days=1)
+REGISTRATION_EMAIL = {
+    'BASE_URL': 'https://your-super-service.example.org',  # without trailing slash
+    'FROM': 'noreply@example.org',
+    'SUBJECT': 'Confirm your email address for FOOBAR',
+    'MESSAGE': '''Hello {username},
+    please visit the following link to confirm your email address: {url}
+    ''',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -152,3 +177,13 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST_USER = "paulkadabo@gmail.com"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = "nljjhejrnjherolq"
+SITE_EMAIL = "paulkadabo@gmail.com"
